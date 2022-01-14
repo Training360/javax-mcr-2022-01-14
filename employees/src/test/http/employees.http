@@ -1,0 +1,30 @@
+GET http://localhost:8080/api/employees
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/employees/9
+Accept: application/json
+
+
+### Create employee
+
+POST http://localhost:8080/api/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### Update
+
+PUT http://localhost:8080/api/employees/9
+Content-Type: application/json
+
+{
+  "name": "Jane Doe 2"
+}
+
+### Delete
+
+DELETE http://localhost:8080/api/employees/9
