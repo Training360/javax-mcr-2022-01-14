@@ -5,7 +5,6 @@ import empapp.dto.CreateActivityCommand;
 import empapp.dto.SummaryDto;
 import empapp.entities.Activity;
 import empapp.entities.Employee;
-import empapp.jmsgateway.EmployeesGateway;
 import empapp.repository.ActivityRepository;
 import empapp.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
@@ -23,14 +22,11 @@ public class ActivityService {
 
     private ActivityMapper activityMapper;
 
-    private EmployeesGateway employeesGateway;
-
     public ActivityDto createActivity(long employeeId, CreateActivityCommand command) {
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new NotFoundException("Employee not found with id: " + employeeId));
         Activity activity = new Activity(employee, command.getType(), command.getDate(), command.getHour());
         activityRepository.save(activity);
-        employeesGateway.changeSummary(employee.getId(), employee.getEid());
         return activityMapper.toDto(activity);
     }
 
