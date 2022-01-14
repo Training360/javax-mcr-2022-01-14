@@ -6,6 +6,9 @@ import empapp.dto.UpdateEmployeeCommand;
 import empapp.entities.Employee;
 import empapp.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +17,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -21,6 +25,9 @@ public class EmployeeService {
     private EmployeeMapper employeeMapper;
 
     public EmployeeDto createEmployee(CreateEmployeeCommand command) {
+        log.debug("Create employee with name: {}", command.getName());
+        log.info("Create with employee");
+
         Employee employee = new Employee(command.getName());
         employeeRepository.save(employee);
         return employeeMapper.toDto(employee);
