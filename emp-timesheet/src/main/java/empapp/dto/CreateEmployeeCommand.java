@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
@@ -14,6 +13,7 @@ import java.util.List;
 public class CreateEmployeeCommand {
 
     @Schema(description = "the name of the new employee", example = "John Doe")
-    @NotBlank
     private String name;
+
+    private long eid;
 }

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>spring.training</groupId>
-	<artifactId>employees</artifactId>
+	<artifactId>empapp-timesheet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -26,22 +26,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.zalando</groupId>
-			<artifactId>problem-spring-web-starter</artifactId>
-			<version>0.26.2</version>
 		</dependency>
 
 		<dependency>
@@ -68,6 +52,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.zalando</groupId>
+			<artifactId>problem-spring-web-starter</artifactId>
+			<version>0.26.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.5.9</version>
@@ -75,7 +65,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-artemis</artifactId>
 		</dependency>
 
 		<dependency>
@@ -99,11 +89,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<layers>
-						<enabled>true</enabled>
-					</layers>
-				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
