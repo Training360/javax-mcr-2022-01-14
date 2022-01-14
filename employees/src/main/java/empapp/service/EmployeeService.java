@@ -5,6 +5,7 @@ import empapp.dto.EmployeeDto;
 import empapp.dto.UpdateEmployeeCommand;
 import empapp.entities.Employee;
 import empapp.repository.EmployeeRepository;
+import empapp.timesheet.TimesheetGateway;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -24,12 +25,17 @@ public class EmployeeService {
 
     private EmployeeMapper employeeMapper;
 
+    private TimesheetGateway timesheetGateway;
+
     public EmployeeDto createEmployee(CreateEmployeeCommand command) {
         log.debug("Create employee with name: {}", command.getName());
         log.info("Create with employee");
 
         Employee employee = new Employee(command.getName());
         employeeRepository.save(employee);
+
+        timesheetGateway.createEmployee(employee);
+
         return employeeMapper.toDto(employee);
     }
 
